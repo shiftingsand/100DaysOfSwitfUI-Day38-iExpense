@@ -14,12 +14,14 @@ struct User : Codable {
 }
 
 struct ContentView: View {
-    @State private var tapCount = UserDefaults.standard.integer(forKey: "Tap")
-    @State private var currentNumber = 1
+    @State private var user = User(firstName: "Bilbo", lastName: "Baggins")
     var body: some View {
-        Button("Tap count \(tapCount)") {
-            self.tapCount += 1
-            UserDefaults.standard.set(self.tapCount, forKey: "Tap")
+        Button("Tap count") {
+            let encoder = JSONDecoder()
+            
+            if let data = try? encoder.encode(self.user) {
+                UserDefaults.standard.set(data, forKey: "UserData")
+            }
         }
     }
 

@@ -13,6 +13,7 @@
 		961D0008246712EC002E36C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 961D0007246712EC002E36C1 /* Assets.xcassets */; };
 		961D000B246712EC002E36C1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 961D000A246712EC002E36C1 /* Preview Assets.xcassets */; };
 		961D000E246712EC002E36C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 961D000C246712EC002E36C1 /* LaunchScreen.storyboard */; };
+		961D00162469FA6F002E36C1 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961D00152469FA6F002E36C1 /* AddView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		961D000A246712EC002E36C1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		961D000D246712EC002E36C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		961D000F246712EC002E36C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		961D00152469FA6F002E36C1 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		961DFFFE246712EA002E36C1 /* iExpense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iExpense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -42,6 +44,7 @@
 			children = (
 				961D0001246712EA002E36C1 /* AppDelegate.swift */,
 				961D0003246712EA002E36C1 /* SceneDelegate.swift */,
+				961D00152469FA6F002E36C1 /* AddView.swift */,
 				961D0005246712EA002E36C1 /* ContentView.swift */,
 				961D0007246712EC002E36C1 /* Assets.xcassets */,
 				961D000C246712EC002E36C1 /* LaunchScreen.storyboard */,
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				961D00162469FA6F002E36C1 /* AddView.swift in Sources */,
 				961D0002246712EA002E36C1 /* AppDelegate.swift in Sources */,
 				961D0004246712EA002E36C1 /* SceneDelegate.swift in Sources */,
 				961D0006246712EA002E36C1 /* ContentView.swift in Sources */,

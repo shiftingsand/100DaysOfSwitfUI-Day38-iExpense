@@ -39,6 +39,31 @@ class Expenses : ObservableObject {
     }
 }
 
+// day 38 - challenge 2
+func changeCost(_ cost : Int) -> Text {
+    if cost < 10 {
+        return Text("$\(cost)")
+            .font(.body)
+            .foregroundColor(.black)
+    } else if cost < 100 {
+        return Text("$\(cost)")
+            .font(.headline)
+            .foregroundColor(.green)
+    } else {
+        return Text("$\(cost)")
+            .font(.largeTitle)
+            .foregroundColor(.red)
+    }
+}
+
+struct Cheapskate : ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.body)
+            .background(Color.black)
+    }
+}
+
 struct ContentView: View {
     @ObservedObject var expenses = Expenses()
     @State private var showingAddExpense = false
@@ -54,7 +79,7 @@ struct ContentView: View {
                             Text(item.type)
                         }
                         Spacer()
-                        Text("$\(item.amount)")
+                        changeCost(item.amount)
                     }
                 }
                 .onDelete(perform: removeItems)

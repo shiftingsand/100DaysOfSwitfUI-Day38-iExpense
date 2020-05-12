@@ -14,6 +14,7 @@ struct AddView: View {
     @State private var name = ""
     @State private var type = "Personal"
     @State private var amount = ""
+    @State private var showingAlert = false
     static let types = ["Business", "Personal"]
     
     var body: some View {
@@ -37,9 +38,17 @@ struct AddView: View {
                     let item = ExpenseItem(name: self.name, type: self.type, amount: actualAmount)
                     self.expenses.items.append(item)
                     self.presentationMode.wrappedValue.dismiss()
+                } else {
+                    self.showingAlert = true
                 }
             }
             )
+        }
+            // day 38 - challenge 3
+        .alert(isPresented: $showingAlert) {
+            Alert(title: Text("Hold up!"), message: Text("Please enter an integer number with no decimal for the cost. \"\(self.amount)\" isn't a valid cost."), dismissButton: .default(Text("OK")) {
+                self.showingAlert = false
+                })
         }
     }
 }

@@ -57,15 +57,16 @@ struct ContentView: View {
                         Text("$\(item.amount)")
                     }
                 }
-            .onDelete(perform: removeItems)
+                .onDelete(perform: removeItems)
             }
             .navigationBarTitle("iExpense")
-            .navigationBarItems(trailing:
-                Button(action: {
-                    self.showingAddExpense = true
-                }) {
-                    Image(systemName: "plus")
-                }
+                // day 38 challenge 1
+                .navigationBarItems(leading: EditButton(), trailing:
+                    Button(action: {
+                        self.showingAddExpense = true
+                    }) {
+                        Image(systemName: "plus")
+                    }
             )
                 .sheet(isPresented: $showingAddExpense) {
                     AddView(expenses: self.expenses)

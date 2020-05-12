@@ -15,6 +15,7 @@ struct AddView: View {
     @State private var type = "Personal"
     @State private var amount = ""
     @State private var showingAlert = false
+    @State private var badNameAlert = false
     static let types = ["Business", "Personal"]
     
     var body: some View {
@@ -31,23 +32,32 @@ struct AddView: View {
                 TextField("Amount", text: $amount)
                     .keyboardType(.numberPad)
             }
-        .navigationBarTitle("Add new expense")
-        .navigationBarItems(trailing:
-            Button("Save") {
-                if let actualAmount = Int(self.amount) {
-                    let item = ExpenseItem(name: self.name, type: self.type, amount: actualAmount)
-                    self.expenses.items.append(item)
-                    self.presentationMode.wrappedValue.dismiss()
-                } else {
-                    self.showingAlert = true
+            .navigationBarTitle("Add new expense")
+            .navigationBarItems(trailing:
+                Button("Save") {
+                    if self.name.trimmingCharacters(in: .whitespaces).count <= 0 {
+                        self.badNameAlert = true
+                    } else {
+                        if let actualAmount = Int(self.amount) {
+                            let item = ExpenseItem(name: self.name, type: self.type, amount: actualAmount)
+                            self.expenses.items.append(item)
+                            self.presentationMode.wrappedValue.dismiss()
+                        } else {
+                            self.showingAlert = true
+                        }
+                    }
                 }
-            }
             )
         }
             // day 38 - challenge 3
         .alert(isPresented: $showingAlert) {
             Alert(title: Text("Hold up!"), message: Text("Please enter an integer number with no decimal for the cost. \"\(self.amount)\" isn't a valid cost."), dismissButton: .default(Text("OK")) {
                 self.showingAlert = false
+                })
+        }
+        .alert(isPresented: $badNameAlert) {
+            Alert(title: Text("Hold up!"), message: Text("You must enter an expense name!"), dismissButton: .default(Text("OK")) {
+                self.badNameAlert = false
                 })
         }
     }
